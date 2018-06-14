@@ -1,0 +1,26 @@
+﻿[debug]2018/06/13 16:48:46 [info] run: debugconsole data: 点击计提工资
+[debug]2018/06/13 16:48:46 [info] error:  output:
+[debug]2018/06/13 16:48:48 [info] run: debugconsole data: 点击发放工资
+[debug]2018/06/13 16:48:48 [info] error:  output:
+[debug]2018/06/13 16:48:48 [info] run: debugconsole data: 工资凭证都已生成
+[debug]2018/06/13 16:48:48 [info] error:  output:
+[debug]2018/06/13 16:48:48 [info] run: debugconsole data: 跳转结转页面
+[debug]2018/06/13 16:48:48 [info] error:  output:
+[debug]2018/06/13 16:48:50 [info] run: debugconsole data: 点击生成凭证
+[debug]2018/06/13 16:48:50 [info] error:  output:
+[debug]2018/06/13 16:50:48 [info] run: debugconsole data: 库存现金余额不足，创建借款凭证
+[debug]2018/06/13 16:50:48 [info] error:  output:
+[debug]2018/06/13 16:51:11 [info] run: debugconsole data: 点击计提工资
+[debug]2018/06/13 16:51:11 [info] error:  output:
+[debug]2018/06/13 16:51:14 [info] run: debugconsole data: 点击发放工资
+[debug]2018/06/13 16:51:14 [info] error:  output:
+[debug]2018/06/13 16:51:14 [info] run: debugconsole data: 工资凭证都已生成
+[debug]2018/06/13 16:51:14 [info] error:  output:
+[debug]2018/06/13 16:51:14 [info] run: debugconsole data: 跳转结转页面
+[debug]2018/06/13 16:51:14 [info] error:  output:
+[debug]2018/06/13 16:51:16 [info] run: debugconsole data: 点击生成凭证
+[debug]2018/06/13 16:51:16 [info] error:  output:
+[debug]2018/06/13 16:51:20 [info] run: debugconsole data: 跳转查凭证页面
+[debug]2018/06/13 16:51:20 [info] error:  output:
+[debug]2018/06/13 16:51:20 [info] run: debugconsole data: 获取报税金额
+[debug]2018/06/13 16:51:20 [info] error:  output:

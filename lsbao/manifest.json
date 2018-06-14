@@ -1,0 +1,289 @@
+{
+    "key": "swschromelingshenbao",
+    "name": "零申报",
+    "version": "0.1.3",
+    "manifest_version": 2,
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
+//    "name": "零申报",
+    "description": "自动操作零申报",
+//    "version": "0.1.3",
+    "update_url": "http://env.update_url",
+
+    //"minimum_chrome_version": "46",
+
+
+    "icons": {
+        "128": "icon.png",
+        "48": "icon.png"
+    },
+    "browser_action": {
+        "default_name": "lingshenbao",
+        "default_icon": "icon.png",
+        "default_title": "lingshenbao",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "page": "background.html"
+    },
+    "options_page": "options.html",
+    "content_scripts": [{
+            "name": "blockFlash",
+            "run_at": "document_start",
+            "all_frames": true,
+            "matches": ["*://*/*"],
+            "js": [
+                "func/blockFlash.js"
+//                "func/blockAlert.js"
+            ]
+        },
+        {
+            "//": "注入公用文件",
+            "run_at": "document_end",
+            "all_frames": true,
+            "matches": [
+
+//                "*://*.jd.com/*",
+//                "*://e.chanjet.com/*",
+//                "*://*.chanapp.com/*",
+                "*://*.kdzwy.com:*/*",
+                "*://*.kdzwy.com/*"
+            ],
+            "js": [
+                "func/jquery-2.1.0.min.js",
+                "func/jquery.cookie.js",
+                "func/async.js",
+                "func/cls_api.js",
+                "config/common.js",
+                "func/common.func.js",
+                "func/alertify/alertify.min.js",
+                "func/storage.func.js",
+                "func/tab/tab.common.js",
+                "func/tab/tab.listener.js",
+                "func/jquery.scrollTo.min.js",
+                "func/jquery.md5.js"
+            ],
+            "css": [
+                "func/alertify/alertify.core.css",
+                "func/alertify/alertify.default.css"
+            ]
+        },
+        {
+        "run_at": "document_end",
+        "matches": [
+            "*://*.jd.com/*"
+//            "*://e.chanjet.com/*"
+            ],
+
+        "js": [
+            "config/background.js",
+            "panel/index.js"
+        ],
+        "css": ["panel/index.css"],
+        "all_frames": false
+    },
+    {
+        "run_at": "document_end",
+        "matches": [
+//            "*://e.chanjet.com/*",
+//            "*://*.chanapp.com/*"
+            "*://main.kdzwy.com:*/*",
+            "*://*.kdzwy.com/*"
+            ],
+        "js": [
+            "config/background.js"
+        ],
+        "all_frames": true
+    },
+
+        /****下载凭证****/
+
+
+        /***下载凭证-END***/
+
+        //新添加凭证
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://*.kdzwy.com:*/voucher/voucher.jsp"
+            ],
+            "js": ["task/zero_declaration/voucher_index.js"],
+            "all_frames": true
+        },
+
+        //保存凭证
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://*.kdzwy.com:*/voucher/voucher.jsp?vchFrom=*",
+                "*://*.kdzwy.com:*/voucher/voucher.jsp?from=wage&ids=*"
+            ],
+            "js": ["task/zero_declaration/voucher_form.js"],
+            "all_frames": true
+        },
+        //工资页面
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://*.kdzwy.com:*/wages/wages.jsp*"
+            ],
+            "js": ["task/zero_declaration/wages_index.js"],
+            "all_frames": true
+        },
+
+        //首页
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://main.kdzwy.com:*/index.jsp*"
+            ],
+            "js": ["task/zero_declaration/index.js"],
+            "all_frames": true
+        },
+
+        //默认
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://main.kdzwy.com:*/default.jsp?*"
+            ],
+            "js": ["task/zero_declaration/default.js"],
+            "all_frames": true
+        },
+
+        //结账页面
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://main.kdzwy.com:*/checkout/checkout.jsp*"
+            ],
+            "js": ["task/zero_declaration/checkout_index.js"],
+            "all_frames": true
+        },
+        //../settings/subject-manage.jsp?_=1522058064240
+        //添加科目页面
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://main.kdzwy.com:*/settings/subject-manage.jsp?*"
+            ],
+            "js": ["task/zero_declaration/subject_manage.js"],
+            "all_frames": true
+        },
+
+        //查凭证页面
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://main.kdzwy.com:*/voucher/voucher-list.jsp*"
+            ],
+            "js": ["task/zero_declaration/voucher_list.js"],
+            "all_frames": true
+        },
+        //打印/print/print-settings-voucher.jsp?type=1&id=1
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://main.kdzwy.com:*/print/print-settings-voucher.jsp?type=*"
+            ],
+            "js": ["task/zero_declaration/vch_print.js"],
+            "all_frames": true
+        },
+
+        //凭证模板页面
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://main.kdzwy.com:*/wages/voucher-template.jsp*"
+            ],
+            "js": ["task/zero_declaration/vch_template.js"],
+            "all_frames": true
+        },
+        //科目列表页面
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://main.kdzwy.com:*/settings/subject-list.jsp*"
+            ],
+            "js": ["task/zero_declaration/subject_list.js"],
+            "all_frames": true
+        },
+        //科目树形页面
+//        {
+//            "run_at": "document_end",
+//            "matches": [
+//                "*://main.kdzwy.com:*/voucher/subject-tree.jsp*"
+//            ],
+//            "js": ["task/zero_declaration/subject_tree.js"],
+//            "all_frames": true
+//        },
+
+        //http://main.kdzwy.com:81/gl/voucher?m=printExport&random=1522389477840
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://main.kdzwy.com:*/gl/voucher?m=printExport&random=*"
+            ],
+            "js": ["task/zero_declaration/print.js"],
+            "all_frames": true
+        },
+        //主页
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://*.kdzwy.com/guanjia/*"
+            ],
+            "js": ["task/zero_declaration/home.js"],
+            "all_frames": true
+        },
+
+        //登录页面
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://gj.kdzwy.com/index_new.html*"
+            ],
+            "js": ["task/zero_declaration/login.js"],
+            "all_frames": true
+        },
+
+        //创建账套
+        {
+            "run_at": "document_end",
+            "matches": [
+                "*://main.kdzwy.com:*/start.jsp?dbid=*"
+            ],
+            "js": ["task/zero_declaration/start.js"],
+            "all_frames": true
+        },
+
+        //global-config
+        {
+            "//": "注入公用文件",
+            "run_at": "document_end",
+            "all_frames": true,
+            "matches": ["*://*/*"],
+            "css": [
+                "func/alertify/alertify.core.css",
+                "func/alertify/alertify.default.css"
+            ]
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "background",
+        "browsingData",
+        "clipboardRead",
+        "clipboardWrite",
+        "cookies",
+        "notifications",
+        "storage",
+        "webRequest",
+        "webRequestBlocking",
+        "downloads",
+        "contentSettings",
+        "management",
+        "nativeMessaging",
+        "<all_urls>"
+    ]
+}
